@@ -1,0 +1,22 @@
+myConnector.getData = function(table, doneCallback) {
+    $.getJSON("http://mobile311-dev.sfgov.org/open311/v2/services.json", function(resp) {
+        var feat = resp.features,
+            tableData = [];
+
+        // Iterate over the JSON object
+        for (var i = 0, len = feat.length; i < len; i++) {
+            tableData.push({
+                "service_code": feat[i].id,
+                "service_code": feat[i].properties.service_code,
+                "service_name": feat[i].properties.service_name,
+                "description": feat[i].properties.description,
+                "metadata": feat[i].properties.metadata,
+                "type": feat[i].properties.type,
+                "group": feat[i].properties.group,
+            });
+        }
+
+        table.appendRows(tableData);
+        doneCallback();
+    });
+};

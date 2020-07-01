@@ -1,0 +1,29 @@
+myConnector.getSchema = function (schemaCallback) {
+    var cols = [{
+        id: "service_code",
+        dataType: tableau.dataTypeEnum.string
+    }, {
+        id: "service_name",
+        dataType: tableau.dataTypeEnum.string
+    }, {
+        id: "description",
+        dataType: tableau.dataTypeEnum.string
+    }, {
+        id: "metadata",
+        dataType: tableau.dataTypeEnum.string
+    }, {
+        id: "type",
+        dataType: tableau.dataTypeEnum.string
+    }, {
+        id: "group",
+        dataType: tableau.dataTypeEnum.string
+    }];
+
+    var tableSchema = {
+        id: "Open311Feed",
+        alias: "Data feed from Open311",
+        columns: cols
+    };
+
+    schemaCallback([tableSchema]);
+};
